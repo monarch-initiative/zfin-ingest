@@ -1,7 +1,7 @@
 # zfin-ingest justfile
 
 # Explicitly enumerate transforms (add new ingests here)
-TRANSFORMS := "gene_to_phenotype genotype_to_phenotype"
+TRANSFORMS := "gene_to_phenotype genotype_to_phenotype orthology"
 
 # List all commands
 _default:
@@ -22,9 +22,14 @@ install:
 download:
     koza download download.yaml
 
+# Preprocess orthology data (combine fly, mouse, human orthologs)
+[group('ingest')]
+preprocess:
+    uv run python scripts/preprocess.py
+
 # Run all transforms
 [group('ingest')]
-transform-all:
+transform-all: preprocess
     #!/usr/bin/env bash
     set -euo pipefail
     for t in {{TRANSFORMS}}; do

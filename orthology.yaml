@@ -1,0 +1,27 @@
+name: 'zfin_orthology'
+
+reader:
+  files:
+    - 'data/zfin_orthologs.tsv'
+  format: 'csv'
+  delimiter: '\t'
+  header_mode: 'first_line'
+  columns:
+    - 'zfin_gene'
+    - 'ortholog_gene'
+    - 'evidence'
+    - 'publications'
+
+writer:
+  edge_properties:
+    - 'id'
+    - 'category'
+    - 'subject'
+    - 'predicate'
+    - 'object'
+    - 'has_evidence'
+    - 'publications'
+    - 'aggregator_knowledge_source'
+    - 'primary_knowledge_source'
+    - 'knowledge_level'
+    - 'agent_type'
