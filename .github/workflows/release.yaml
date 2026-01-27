@@ -1,8 +1,18 @@
 name: Release
 
 on:
-  release:
-    types: [published]
+  schedule:
+    # Run monthly on the 1st at midnight UTC
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (leave empty for auto-generated date tag)'
+        required: false
+        type: string
+
+env:
+  TRANSFORMS: "gene_to_phenotype genotype_to_phenotype orthology"
 
 jobs:
   release:
@@ -24,23 +34,45 @@ jobs:
       - name: Install dependencies
         run: uv sync --group dev
 
+      - name: Install just
+        uses: extractions/setup-just@v2
+
       - name: Download data
-        run: |
-          uv run koza download download.yaml || echo "No downloads configured"
+        run: just download
+
+      - name: Preprocess data
+        run: just preprocess
 
       - name: Run transforms
         run: |
-          # Run all transforms and collect output
-          for yaml in *.yaml; do
-            if [ "$yaml" != "download.yaml" ] && [ -f "${yaml%.yaml}.py" ]; then
-              echo "Running transform: $yaml"
-              uv run koza transform "$yaml" || true
-            fi
+          for transform in $TRANSFORMS; do
+            echo "Running transform: $transform"
+            uv run koza transform src/$transform.yaml
           done
 
-      - name: Upload output artifacts
-        uses: actions/upload-artifact@v4
+      - name: Generate release tag
+        id: tag
+        run: |
+          if [ -n "${{ inputs.tag }}" ]; then
+            echo "tag=${{ inputs.tag }}" >> $GITHUB_OUTPUT
+          else
+            echo "tag=v$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: ingest-output
-          path: output/
-          if-no-files-found: warn
+          tag_name: ${{ steps.tag.outputs.tag }}
+          name: Release ${{ steps.tag.outputs.tag }}
+          body: |
+            Automated monthly release of ZFIN ingest data.
+
+            ## Transforms included
+            - gene_to_phenotype
+            - genotype_to_phenotype
+            - orthology
+          draft: false
+          prerelease: false
+          files: |
+            output/*_nodes.tsv
+            output/*_edges.tsv
