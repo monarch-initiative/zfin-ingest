@@ -6,7 +6,7 @@ metadata:
 reader:
   format: 'csv'
   files:
-    - 'data/pheno_environment_fish.txt'
+    - '../data/pheno_environment_fish.txt'
   delimiter: '\t'
   header_mode: 'none'
   columns:

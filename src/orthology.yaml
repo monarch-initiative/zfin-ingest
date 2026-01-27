@@ -2,7 +2,7 @@ name: 'zfin_orthology'
 
 reader:
   files:
-    - 'data/zfin_orthologs.tsv'
+    - '../data/zfin_orthologs.tsv'
   format: 'csv'
   delimiter: '\t'
   header_mode: 'infer'

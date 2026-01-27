@@ -69,7 +69,7 @@ metadata:
 reader:
   format: "csv"
   files:
-    - "../../data/<filename>"
+    - "../data/<filename>"
   delimiter: "\t"
 transform_code: "<ingest_name>.py"
 transform_mode: "flat"
@@ -86,7 +86,7 @@ When a file has comment lines AND a header row with a comment character prefix:
 reader:
   format: "csv"
   files:
-    - "../../data/<filename>"
+    - "../data/<filename>"
   delimiter: "\t"
   comment_char: "#"  # Skip lines starting with #
   header_mode: 1  # After filtering comments, line 1 is the header (1-indexed)

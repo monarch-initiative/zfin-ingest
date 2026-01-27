@@ -2,7 +2,7 @@ name: 'zfin_gene_to_phenotype'
 
 reader:
   files:
-    - 'data/phenoGeneCleanData_fish.txt'
+    - '../data/phenoGeneCleanData_fish.txt'
   format: 'csv'
   delimiter: '\t'
   header_mode: 'none'

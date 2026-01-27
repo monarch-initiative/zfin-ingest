@@ -6,7 +6,7 @@ metadata:
 reader:
   format: 'csv'
   files:
-    - 'data/id_map_zfin.tsv'
+    - '../data/id_map_zfin.tsv'
   delimiter: '\t'
   header_mode: 0
   columns:

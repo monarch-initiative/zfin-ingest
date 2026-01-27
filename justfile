@@ -1,5 +1,8 @@
 # zfin-ingest justfile
 
+# Package directory
+PKG := "src"
+
 # Explicitly enumerate transforms (add new ingests here)
 TRANSFORMS := "gene_to_phenotype genotype_to_phenotype orthology"
 
@@ -35,14 +38,14 @@ transform-all: preprocess
     for t in {{TRANSFORMS}}; do
         if [ -n "$t" ]; then
             echo "Transforming $t..."
-            uv run koza transform $t.yaml
+            uv run koza transform {{PKG}}/$t.yaml
         fi
     done
 
 # Run specific transform
 [group('ingest')]
 transform NAME:
-    uv run koza transform {{NAME}}.yaml
+    uv run koza transform {{PKG}}/{{NAME}}.yaml
 
 # Run tests
 [group('development')]

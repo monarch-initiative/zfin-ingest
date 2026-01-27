@@ -6,7 +6,7 @@ metadata:
 reader:
   format: 'csv'
   files:
-    - 'data/pub_to_pubmed_id_translation.txt'
+    - '../data/pub_to_pubmed_id_translation.txt'
   delimiter: '\t'
   header_mode: 'none'
   columns:
