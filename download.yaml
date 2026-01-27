@@ -1,9 +1,8 @@
-# Download configuration for {{project_name}}
+# Download configuration for zfin-ingest
 # Add entries for each data source
 
-downloads: []
-
-# Example entry:
-# downloads:
-#   - url: "https://example.org/data.tsv"
-#     local_name: "data/example.tsv"
+downloads:
+  - url: "https://zfin.org/downloads/phenoGeneCleanData_fish.txt"
+    local_name: "data/phenoGeneCleanData_fish.txt"
+  - url: "https://raw.githubusercontent.com/obophenotype/zebrafish-phenotype-ontology/master/src/curation/id_map_zfin.tsv"
+    local_name: "data/id_map_zfin.tsv"

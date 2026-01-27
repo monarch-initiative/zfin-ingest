@@ -1,0 +1,19 @@
+name: 'eqe2zp'
+
+metadata:
+  description: 'Mapping file from ZFIN EQE to ZP Terms'
+
+reader:
+  format: 'csv'
+  files:
+    - 'data/id_map_zfin.tsv'
+  delimiter: '\t'
+  header_mode: 0
+  columns:
+    - 'iri'
+    - 'id'
+
+transform:
+  key: 'id'
+  values:
+    - 'iri'
