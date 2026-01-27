@@ -1,0 +1,51 @@
+name: 'zfin_genotype_to_phenotype'
+
+reader:
+  files:
+    - 'data/phenotype_fish.txt'
+  format: 'csv'
+  delimiter: '\t'
+  header_mode: 'none'
+  columns:
+    - 'Fish ID'
+    - 'Fish Name'
+    - 'Start Stage ID'
+    - 'Start Stage Name'
+    - 'End Stage ID'
+    - 'End Stage Name'
+    - 'Affected Structure or Process 1 subterm ID'
+    - 'Affected Structure or Process 1 subterm Name'
+    - 'Post-composed Relationship ID'
+    - 'Post-composed Relationship Name'
+    - 'Affected Structure or Process 1 superterm ID'
+    - 'Affected Structure or Process 1 superterm Name'
+    - 'Phenotype Keyword ID'
+    - 'Phenotype Keyword Name'
+    - 'Phenotype Tag'
+    - 'Affected Structure or Process 2 subterm ID'
+    - 'Affected Structure or Process 2 subterm name'
+    - 'Post-composed Relationship (rel) ID'
+    - 'Post-composed Relationship (rel) Name'
+    - 'Affected Structure or Process 2 superterm ID'
+    - 'Affected Structure or Process 2 superterm name'
+    - 'Publication ID'
+    - 'Environment ID'
+
+transform:
+  mappings:
+    - 'eqe2zp.yaml'
+    - 'pheno_environment_fish.yaml'
+    - 'pub2pubmed.yaml'
+
+writer:
+  edge_properties:
+    - 'id'
+    - 'category'
+    - 'subject'
+    - 'predicate'
+    - 'object'
+    - 'publications'
+    - 'aggregator_knowledge_source'
+    - 'primary_knowledge_source'
+    - 'knowledge_level'
+    - 'agent_type'

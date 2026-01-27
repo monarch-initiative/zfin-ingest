@@ -1,0 +1,19 @@
+name: 'pub2pubmed'
+
+metadata:
+  description: 'Mapping file from ZFIN PUB IDs to PubMed IDs'
+
+reader:
+  format: 'csv'
+  files:
+    - 'data/pub_to_pubmed_id_translation.txt'
+  delimiter: '\t'
+  header_mode: 'none'
+  columns:
+    - 'pub'
+    - 'pubmed'
+
+transform:
+  key: 'pub'
+  values:
+    - 'pubmed'
