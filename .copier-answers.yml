@@ -1,0 +1,12 @@
+_commit: 8ecad33
+_src_path: cookiecutter-monarch-ingest
+copyright_year: '2026'
+email: info@monarchinitiative.org
+full_name: Monarch Initiative
+github_handle: monarch-initiative
+github_org: monarch-initiative
+license: BSD-3-Clause
+project_description: ZFIN gene-to-phenotype, genotype-to-phenotype, and orthology
+    ingests
+project_name: zfin-ingest
+project_slug: zfin_ingest
