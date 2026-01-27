@@ -5,7 +5,7 @@ reader:
     - 'data/zfin_orthologs.tsv'
   format: 'csv'
   delimiter: '\t'
-  header_mode: 'first_line'
+  header_mode: 'infer'
   columns:
     - 'zfin_gene'
     - 'ortholog_gene'
