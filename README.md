@@ -1,50 +1,10 @@
-# zfin-ingest
-
-ZFIN gene-to-phenotype, genotype-to-phenotype, and orthology ingests
-
-## Setup
-
-```bash
-just setup
-```
-
-## Usage
-
-### Download source data
-
-```bash
-just download
-```
-
-### Run transforms
-
-```bash
-# Run all transforms
-just transform-all
-
-# Run specific transform
-just transform <transform_name>
-```
-
-### Run tests
-
-```bash
-just test
-```
-
-## Adding New Ingests
-
-Use the `create-koza-ingest` Claude skill to add new ingests to this repository.
-
-## About ZFIN
+# ZFIN
 
 ZFIN is the Zebrafish Model Organism Database.
 
 - [ZFIN bulk downloads](https://zfin.org/downloads)
 
-## Ingests
-
-### Gene to Phenotype
+## Gene to Phenotype
 
 This ingest uses ZFIN's clean gene phenotype download file, which only contains phenotypes which can safely be associated to a single affected gene. This ingest is distinct from the Alliance phenotype index because ZFIN builds Entity-Quality-Entity phenotype statements that can be built from post-composed terms (E1a+E1b+Q+E2a+E2b).
 
@@ -65,7 +25,7 @@ This ingest uses ZFIN's clean gene phenotype download file, which only contains 
     * aggregating_knowledge_source (["infores:monarchinitiative"])
     * primary_knowledge_source (infores:zfin)
 
-### Genotype to Phenotype
+## Genotype to Phenotype
 
 Phenotype associations at the genotype level, including complex genotypes with multiple affected genes.
 
@@ -86,7 +46,7 @@ Phenotype associations at the genotype level, including complex genotypes with m
     * aggregating_knowledge_source (["infores:monarchinitiative"])
     * primary_knowledge_source (infores:zfin)
 
-### Orthology
+## Orthology
 
 Ortholog associations between ZFIN zebrafish genes and genes from other organisms.
 
