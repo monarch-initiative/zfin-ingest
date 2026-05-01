@@ -23,7 +23,7 @@ install:
 # Download source data
 [group('ingest')]
 download:
-    uv run python scripts/download.py
+    uv run downloader
 
 # Preprocess orthology data (combine fly, mouse, human orthologs)
 [group('ingest')]
