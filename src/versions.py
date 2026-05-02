@@ -17,7 +17,6 @@ from kozahub_metadata_schema import (
     version_from_http_last_modified,
 )
 
-
 INGEST_DIR = Path(__file__).resolve().parents[1]
 DOWNLOAD_YAML = INGEST_DIR / "download.yaml"
 

@@ -11,9 +11,9 @@ from pathlib import Path
 INGEST_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(INGEST_DIR / "src"))
 
-from versions import get_source_versions  # noqa: E402
 from kozahub_metadata_schema.writer import write_metadata  # noqa: E402
 
+from versions import get_source_versions  # noqa: E402
 
 if __name__ == "__main__":
     src = INGEST_DIR / "src"
