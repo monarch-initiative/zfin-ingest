@@ -50,6 +50,9 @@ jobs:
             uv run koza transform src/$transform.yaml
           done
 
+      - name: Emit release metadata
+        run: just metadata
+
       - name: Generate release tag
         id: tag
         run: |
