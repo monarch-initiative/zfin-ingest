@@ -1,4 +1,3 @@
-import uuid
 
 import koza
 from biolink_model.datamodel.pydanticmodel_v2 import (
@@ -31,7 +30,6 @@ def transform_record(koza_transform, row):
     has_evidence = [evidence] if evidence else None
 
     association = GeneToGeneHomologyAssociation(
-        id="uuid:" + str(uuid.uuid1()),
         subject=row["zfin_gene"],
         predicate="biolink:orthologous_to",
         object=row["ortholog_gene"],
