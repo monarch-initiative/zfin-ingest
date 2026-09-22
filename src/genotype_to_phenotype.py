@@ -1,4 +1,3 @@
-import uuid
 
 import koza
 from biolink_model.datamodel.pydanticmodel_v2 import (
@@ -83,7 +82,6 @@ def transform_record(koza_transform, row):
         publication_id = "ZFIN:" + zdb_pub_id
 
     association = GenotypeToPhenotypicFeatureAssociation(
-        id="uuid:" + str(uuid.uuid1()),
         subject="ZFIN:" + row["Fish ID"],
         predicate="biolink:has_phenotype",
         object=zp_term,
